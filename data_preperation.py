@@ -4,6 +4,9 @@ import statistics as stats
 import matplotlib.pyplot as plt
 import scipy
 
+
+
+
 def format_df_columns(serie, _format):
     """
     Input: DateFrame Serie (column)
