@@ -9,6 +9,6 @@ def dataframe_plot(df, x, y, kind = 'line'):
     fig, ax = plt.subplots()
     ax = df.plot(x, y, kind = kind
            , title = '{} vs {}'.format(x, y), ax = ax);
-    return ax
+    return fig, ax
     
     
