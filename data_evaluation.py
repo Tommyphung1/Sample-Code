@@ -80,5 +80,20 @@ def hypothesis_testing(sample1, sample2 = None, pop_mean, pop_std , test, alpha,
         print('p_val: {}|alpha: {}'.format(round(result,4),alpha))
         return result
     
-    
-    
+    elif test = 'ks':
+    # Test the distribution is there is a difference between a normal distibution
+    # H0: There is no difference between this distribution and a normal distribution
+        if sample2 == None:
+            results = stats.kstest(sample1, 'norm', N = sample_size)
+        else:
+            results = stats.ks_2samp(sample1, sample2)
+
+        if results[1] >= alpha:
+            print('Results: Failed to reject Null Hypothesis')
+            print('There is no difference between this distribution and a normal distibution')
+        else:
+            print('Results: Reject Null Hypothesis')
+            print('There is a difference between this distribution and a normal distibution')
+
+        print('p_val: {}|alpha: {}'.format(round(results[1],4),alpha))
+        return results
