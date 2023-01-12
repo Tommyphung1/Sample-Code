@@ -1,4 +1,7 @@
-def dataframe_plot(df, x, y, kind = 'line'):
+import matplotlib.pyplot as plt
+
+
+def dataframe_plot(dim = 1, title = None):
     """
     Inputs: df - DataFrame, x - column name (x-axis), y - column name (y-axis), kind - Type of graph
 
@@ -6,9 +9,8 @@ def dataframe_plot(df, x, y, kind = 'line'):
     
     Output: Return the ax for plotting
     """
-    fig, ax = plt.subplots()
-    ax = df.plot(x, y, kind = kind
-           , title = '{} vs {}'.format(x, y), ax = ax);
+    fig, ax = plt.subplots(dim)
+   
     return fig, ax
     
     

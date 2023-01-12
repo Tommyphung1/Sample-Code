@@ -1,5 +1,7 @@
 import scipy.stats as stats
 from math import sqrt
+import statsmodels.api as sm
+from statsmodels.formula.api import ols
 
 def hypothesis_testing(sample1, sample2 = None, pop_mean, pop_std , test, alpha, sample_size, two_tailed = False):
     # Test the sample mean to see whether the sample mean comes from the population or from a different population

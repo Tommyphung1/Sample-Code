@@ -18,12 +18,31 @@ def look_dataframe(data):
     """
     display(data.head())
     print('Column Names:', list(data.columns))
-    print('Index Names:', list(data.index))
+    print('Number of observation:', len(data.index))
     
     if True in data.duplicated().value_counts().keys():
         print('Duplicates detected')
         display(data[data.duplicated(keep= False)])
     
-    if True in data.isna().value_counts().keys():
+    results = data.isna().any()
+    if True in results.values:
         print('N/A detected')
-        display(data.info())
+        print('Columns with NaN: ', list(results[results.values == True].index))
+        
+def look_columns(data, columns):
+    """
+    Input: DataFrame Series
+    
+    Output: None
+    Display: Column unique values and notice any strange data points.
+    
+    """
+    if type(columns) != list:
+        columns = [columns]
+    display(data[columns].head())
+    for column in columns:
+        if(len(data[column].unique()) == len(data)):
+            print('{} has all unique observations. '.format(column))
+        else:
+            print('{} has {}/{} unique observations. '.format(column, len(data[column].unique()), len(data)))
+        display(data[columns][data[column].duplicated(keep = False)].sort_values(column))
